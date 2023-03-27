@@ -29,6 +29,7 @@ podTemplate(yaml: '''
  ./kubectl apply -f calculator_div.yaml -n staging
  ./kubectl apply -f hazelcast.yaml -n staging
  sleep 60
+ echo 'This is using image: dlambrig/week8:1.1'
  ./kubectl get pods -n staging
  test $(curl calculator-service.staging.svc.cluster.local:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || 'fail'
  test $(curl calculator-service.staging.svc.cluster.local:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || 'fail'
@@ -38,6 +39,7 @@ podTemplate(yaml: '''
  ./kubectl apply -f calculator.yaml -n staging
  ./kubectl apply -f hazelcast.yaml -n staging
  sleep 60
+ echo 'This is using image: dlambrig/hello-kaniko:0.5'
  ./kubectl get pods -n staging
  test $(curl calculator-service.staging.svc.cluster.local:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || 'fail'
  test $(curl calculator-service.staging.svc.cluster.local:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || 'fail'

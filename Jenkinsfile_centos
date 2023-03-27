@@ -1,11 +1,6 @@
 podTemplate(yaml: '''
     apiVersion: v1
     kind: Pod
-    contexts:
-    - context:
-       cluster: staging
-       user: staging
-     name: staging
     spec:
       containers:
       - name: centos

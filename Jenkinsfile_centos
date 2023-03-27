@@ -26,7 +26,7 @@ podTemplate(yaml: '''
  chmod +x ./kubectl
  ./kubectl version --client
  pwd
- ./kubectl apply -f calculator.yaml -n staging
+ ./kubectl apply -f calculator_div.yaml -n staging
  ./kubectl apply -f hazelcast.yaml -n staging
  sleep 60
  ./kubectl get pods -n staging
@@ -35,7 +35,7 @@ podTemplate(yaml: '''
  ./kubectl delete deployments calculator-deployment -n staging
  ./kubectl delete deployments hazelcast -n staging
  sleep 60
- ./kubectl apply -f calculator_div.yaml -n staging
+ ./kubectl apply -f calculator.yaml -n staging
  ./kubectl apply -f hazelcast.yaml -n staging
  sleep 60
  ./kubectl get pods -n staging

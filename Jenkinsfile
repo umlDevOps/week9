@@ -27,8 +27,8 @@ podTemplate(yaml: '''
  ./kubectl apply -f hazelcast.yaml -n staging
  sleep 90
  ./kubectl get pods -n staging
- ./kubectl delete deployments calculator-deployment -n stagin
- ./kubectl delete deployments hazelcast -n stagin
+ ./kubectl delete deployments calculator-deployment -n staging
+ ./kubectl delete deployments hazelcast -n staging
  '''
  }
  }

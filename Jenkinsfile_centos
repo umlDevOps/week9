@@ -35,8 +35,8 @@ podTemplate(yaml: '''
  ./kubectl apply -f hazelcast.yaml -n staging
  sleepl 30
  ./kubectl get pods -n staging
- test $(curl calculator-service.staging.svc.cluster.local:8080/sum?a=6\&b=2) -eq 8 && echo 'pass' || 'fail'
- test $(curl calculator-service.staging.svc.cluster.local:8080/div?a=6\&b=2) -eq 3 && echo 'pass' || 'fail'
+ test $(curl calculator-service.staging.svc.cluster.local:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || 'fail'
+ test $(curl calculator-service.staging.svc.cluster.local:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || 'fail'
  ./kubectl delete deployments calculator-deployment -n staging
  ./kubectl delete deployments hazelcast -n staging
  '''

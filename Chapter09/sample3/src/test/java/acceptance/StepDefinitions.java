@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
 
+
 /** Steps definitions for calculator.feature */
 public class StepDefinitions {
     private String server = System.getProperty("calculator.url");
@@ -17,23 +18,6 @@ public class StepDefinitions {
     private String b;
     private String result;
 
-    @Given("^I have dividend and divisor: (.*) and (.*)$")
-    public void i_have_two_numbers(String a, String b) throws Throwable {
-        this.a = a;
-        this.b = b;
-    }
-
-    @When("^the calculator divides them$")
-    public void the_calculator_divs_them() throws Throwable {
-        String url = String.format("%s/div?a=%s\\b=%s", server, a, b);
-        result = restTemplate.getForObject(url, String.class);
-    }
-
-    @Then("^I receive (.*) as a quotient")
-    public void i_receive_as_a_result(String expectedResult) throws Throwable {
-        assertEquals(expectedResult, result);
-    }
-
     @Given("^I have two numbers: (.*) and (.*)$")
     public void i_have_two_numbers(String a, String b) throws Throwable {
         this.a = a;
@@ -42,7 +26,7 @@ public class StepDefinitions {
 
     @When("^the calculator sums them$")
     public void the_calculator_sums_them() throws Throwable {
-        String url = String.format("%s/sum?a=%s\\b=%s", server, a, b);
+        String url = String.format("%s/sum?a=%s&b=%s", server, a, b);
         result = restTemplate.getForObject(url, String.class);
     }
 
@@ -51,14 +35,3 @@ public class StepDefinitions {
         assertEquals(expectedResult, result);
     }
 }
-/*
-Feature: Calculator
-  Scenario: Divide two numbers
-    Given I have dividend and divisor: 6 and 3
-    When the calculator divides them
-    Then I receive 2 as a quotient
-    
-  Scenario: Sum two numbers
-    Given I have two numbers: 1 and 2
-    When the calculator sums them
-    Then I receive 3 as a result */
